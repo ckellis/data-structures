@@ -12,16 +12,19 @@ var Queue = function() {
 var queueMethods = {};
 
 queueMethods.enqueue = function(value){
-  this[length] = value;
-  this.length++;
+      for(var i = this.length; i >= 0; i--){
+      this[i+1] = this[i];
+    }
+    this[0] = value;
+    this.length++;
 };
 
 queueMethods.dequeue = function(){
   var result;
-  if(this.length > 0){
+  if(this.length > 0){   
+    result = this[this.length-1];
+    delete this[this.length-1];
     this.length--;
-    result = this[0];
-    delete this[0];
   }
   return result;
 };
