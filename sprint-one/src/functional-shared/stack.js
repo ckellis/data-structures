@@ -11,7 +11,7 @@ var Stack = function() {
 var stackMethods = {};
 
 stackMethods.push = function(value) {
-  this[length] = value;
+  this[this.length] = value;
   this.length++;
 };
 
@@ -19,8 +19,8 @@ stackMethods.pop = function() {
   var result;
   if(this.length > 0){
     this.length--;
-    result = this[length];
-    delete this[length];
+    result = this[this.length];
+    delete this[this.length];
   }
   return result;
 };
