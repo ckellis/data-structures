@@ -3,8 +3,8 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = null;  // fix me
-
+  newTree.children = [];  // fixed!
+  _.extend(newTree,treeMethods);
   return newTree;
 };
 
@@ -12,10 +12,24 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   // your code here
-  newTree.children = null;  // fix me
+  var child = Tree(value);
+  this.children.push(child);
 };
 
 treeMethods.contains = function(target) {
+  var treeHelper = function(curr, found){
+    if(curr.value === target){
+      found = true;
+    } else if(curr.children.length > 0){
+        for(var i = 0; i < curr.children.length; i++){
+          found = treeHelper(curr.children[i], found);
+        }
+    } else {
+      found = found || false;
+    }
+    return found;
+  }
+  return treeHelper(this, false);
 };
 
 
