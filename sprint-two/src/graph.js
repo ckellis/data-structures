@@ -3,16 +3,25 @@
 // ------------------------
 // Instantiate a new graph
 var Graph = function() {
+  this.nodes = {};
+  this.edges = {};
 };
 
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  this.nodes[node] = node;
 };
 
 // ------------------------
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
+  for(var each in this.nodes){
+    if(this.nodes[each] === node){
+      return true;
+    }
+  }
+  return false;
 };
 
 // ------------------------
