@@ -31,20 +31,44 @@ BinarySearchTree.treeMethods.insert = function(value){
   }
 };
 
-BinarySearchTree.treeMethods.contains = function(target){
-  var currTree = this;
+BinarySearchTree.treeMethods.contains = function(target, node, flag){
+  /*var currTree = this;
   while(currTree !== null){
     if(currTree.value === target){
       return true;
     } else if(target < currTree.value){
       currTree = currTree.left;
     } else {
-      
+      currTree = currTree.right;
     }
   }
+  return false;
+  */
+  node = node || this;
+  flag = false;
+  if(node.value !== target && !node.left && !node.right){
+    return flag;
+  } else if(node.value === target){
+    flag = true;
+  } else if(node.value > target){
+    flag = node.contains(target, node.left, flag);
+  } else {
+    flag = node.contains(target, node.right, flag);
+  }
+  return flag;
 };
 
-BinarySearchTree.treeMethods.depthFirstLog = function(){
+BinarySearchTree.treeMethods.depthFirstLog = function(func, node){
+  node = node || this;
+  if(node !== null){
+    func(node.value);
+  }
+  if(node.left){
+    node.depthFirstLog(func, node.left);
+  }
+  if(node.right){
+    node.depthFirstLog(func, node.right);
+  }
 
 };
 /*
