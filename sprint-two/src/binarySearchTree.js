@@ -71,6 +71,20 @@ BinarySearchTree.treeMethods.depthFirstLog = function(func, node){
   }
 
 };
+
+BinarySearchTree.treeMethods.breadthFirstLog = function(func, node){
+  var toVisit = [node];
+  while(toVisit.length > 0){
+    var current = toVisit.shift();
+    func(current.value);
+    if(current.left){
+      toVisit.push(current.left);
+    }
+    if(current.right){
+      toVisit.push(current.right);
+    }
+  }
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
