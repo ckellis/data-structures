@@ -1,4 +1,4 @@
-var LinkedList = function() {
+var DoublyLinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
@@ -18,6 +18,7 @@ var LinkedList = function() {
     var newNode = Node(value);
     if(!list.head){
       list.head = newNode;
+      list.tail = newNode;
     } else {
       list.head.prev = newNode;
       newNode.next = list.head;

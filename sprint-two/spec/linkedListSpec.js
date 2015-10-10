@@ -2,7 +2,7 @@ describe('linkedList', function() {
   var linkedList;
 
   beforeEach(function() {
-    linkedList = LinkedList();
+    linkedList = DoublyLinkedList();
   });
 
   it('should have a head and tail', function() {
@@ -49,6 +49,15 @@ describe('linkedList', function() {
     linkedList.addToTail(5);
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
+  });
+
+  it('should add to head and remove from tail', function(){
+    linkedList.addToHead(4);
+    linkedList.addToHead(5);
+    linkedList.addToHead(6);
+    linkedList.removeTail();
+    expect(linkedList.contains(4)).to.equal(false);
+    expect(linkedList.contains(6)).to.equal(true);
   });
 
   // add more tests here to test the functionality of linkedList
