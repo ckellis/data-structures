@@ -29,10 +29,13 @@ treeMethods.removeFromParent = function(){
   }
 };
 
-treeMethods.traverse = function(callback){
-  callback(this.value);
-  for(var i = 0; i < this.children.length; i++){
-    this.traverse(this.children[i]);
+treeMethods.traverse = function(callback, node){
+  node = node || this;
+  if(node.value){
+    callback(node.value);
+  }
+  for(var i = 0; i < node.children.length; i++){
+    this.traverse(callback, node.children[i]);
   }
 };
 

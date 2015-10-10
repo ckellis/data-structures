@@ -72,8 +72,8 @@ BinarySearchTree.treeMethods.depthFirstLog = function(func, node){
 
 };
 
-BinarySearchTree.treeMethods.breadthFirstLog = function(func, node){
-  var toVisit = [node];
+BinarySearchTree.treeMethods.breadthFirstLog = function(func){
+  var toVisit = [this];
   while(toVisit.length > 0){
     var current = toVisit.shift();
     func(current.value);

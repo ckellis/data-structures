@@ -36,4 +36,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5,2,3]);
   });
+
+  it('should complete a BFS log', function(){
+    var arr = [];
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(7);
+    binarySearchTree.breadthFirstLog(function(x){arr.push(x);});
+    expect(arr).to.eql([5,1,9,3,7,12]);
+  });
 });
