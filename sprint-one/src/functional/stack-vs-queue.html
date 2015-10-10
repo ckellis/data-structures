@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type ="text/javascript" src="functional/queue.js"></script>
+    <script type ="text/javascript" src="functional/stack.js"></script>
+    <script type ="text/javascript" src="functional-shared/queue.js"></script>
+    <script type ="text/javascript" src="functional-shared/stack.js"></script>
+    <script type ="text/javascript" src="prototypal/queue.js"></script>
+    <script type ="text/javascript" src="prototypal/stack.js"></script>
+    <script type ="text/javascript" src="pseudoclassical/queue.js"></script>
+    <script type ="text/javascript" src="pseudoclassical/stack.js"></script>
+
+    <script>
+      var functional = [];
+      var functionalShared = [];
+      var prototypal = [];
+      var pseudoclassical = [];
+
+      var test = function(container, number, instantiator){
+        for(var i = 0; i < number; i++){
+          container.push(instantiator());
+        }
+      };
+
+      test(functional, 50000, Stack);
+    </script>
+  </head>
+  <body>
+    <img src="https://pbs.twimg.com/profile_images/559166887968260096/e-SnfdE1_400x400.jpeg" style="bottom:0; left:0">
+  </body>
+</html>
