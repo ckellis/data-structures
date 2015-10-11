@@ -47,4 +47,13 @@ describe('binarySearchTree', function() {
     binarySearchTree.breadthFirstLog(function(x){arr.push(x);});
     expect(arr).to.eql([5,1,9,3,7,12]);
   });
+
+  it('should rebalance a basic tree', function(){
+    var arr = [];
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(12);
+    binarySearchTree.rebalance(binarySearchTree);
+    console.log(binarySearchTree);
+    expect(arr).to.eql([5,1,9,3,7,12]);
+  });
 });

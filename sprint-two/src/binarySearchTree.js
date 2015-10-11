@@ -85,6 +85,39 @@ BinarySearchTree.treeMethods.breadthFirstLog = function(func){
     }
   }
 };
+
+BinarySearchTree.treeMethods.rebalance = function(node){
+  //if we have trailing to the left with no right children
+  if(node.left && !node.right){
+    if(node.left.left && !node.left.right){
+      //make top node child of node being shifted up
+      node.left.right = node;
+      //set node to be new parent
+      node = node.left;
+      node.right.left = null;
+    }
+  }
+  //if we have trailing to the right with no left children
+  if(node.right && !node.left){
+    if(node.right.right && !node.right.left){
+      console.log("trailing right: "+ node);
+      node.right.left = node;
+      node = node.right;
+      node.left.right = null;
+    }
+  }
+
+  if(node.right){
+    console.log("going right!");
+    this.rebalance(node.right);
+  }
+  if(node.left){
+    this.rebalance(node.left);
+  }
+  //node has a right child that has no right child
+
+  //node has a left child that has no left child
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
