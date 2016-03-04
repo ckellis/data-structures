@@ -5,25 +5,24 @@ var DoublyLinkedList = function() {
 
   list.addToTail = function(value) {
     var newNode = Node(value);
-    if(!list.head){
+    if (!list.head) {
       list.head = newNode;
     } else {
+      newNode.prev = list.tail;
       list.tail.next = newNode;
     }
     list.tail = newNode;
-
   };
 
   list.addToHead = function(value) {
     var newNode = Node(value);
-    if(!list.head){
-      list.head = newNode;
+    if (!list.tail) {
       list.tail = newNode;
     } else {
       list.head.prev = newNode;
       newNode.next = list.head;
-      list.head = newNode;
     }
+    list.head = newNode;
   };
 
   list.removeHead = function() {
